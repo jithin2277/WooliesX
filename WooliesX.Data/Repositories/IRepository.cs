@@ -8,5 +8,7 @@ namespace WooliesX.Data.Repositories
     public interface IRepository<T> : IDisposable where T : class
     {
         Task<IEnumerable<T>> GetAll();
+
+        Task<T> 
     }
 }
