@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using WooliesX.Data.Entities;
-using WooliesX.Data.Enums;
-using WooliesX.Data.Repositories;
 using System.Linq;
+using WooliesX.Http;
 
 namespace WooliesX.Data
 {
@@ -18,12 +17,12 @@ namespace WooliesX.Data
 
     public class ShopperHistoryProcessor : IShopperHistoryProcessor
     {
-        private IRepository<ShopperHistoryEntity> _shopperHistoryRepository;
+        private IHttpClientHelper _httpClientHelper;
 
-        public ShopperHistoryProcessor(IRepository<ShopperHistoryEntity> shopperHistoryRepository)
+        public ShopperHistoryProcessor(IHttpClientHelper httpClientHelper)
         {
-            _shopperHistoryRepository = shopperHistoryRepository
-                ?? throw new ArgumentNullException(nameof(shopperHistoryRepository));
+            _httpClientHelper = httpClientHelper
+                ?? throw new ArgumentNullException(nameof(httpClientHelper));
         }
 
         public async Task<IEnumerable<ProductEntity>> GetProductsByPopularityByQuantity()
@@ -55,7 +54,9 @@ namespace WooliesX.Data
 
         public async Task<IEnumerable<ShopperHistoryEntity>> GetShopperHistory()
         {
-            return await _shopperHistoryRepository.GetAll().ConfigureAwait(false);
+            return await _httpClientHelper
+                .GetAsync<IEnumerable<ShopperHistoryEntity>>(Constants.SHOPPER_HISTORY_API_URL)
+                .ConfigureAwait(false);
         }
 
         #region IDisposable Support
@@ -68,10 +69,9 @@ namespace WooliesX.Data
             {
                 if (disposing)
                 {
-                    if (_shopperHistoryRepository != null)
+                    if (_httpClientHelper != null)
                     {
-                        _shopperHistoryRepository.Dispose();
-                        _shopperHistoryRepository = null;
+                        _httpClientHelper = null;
                     }
                 }
 

@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using WooliesX.Data.Repositories;
 using WooliesX.Data.Entities;
 using WooliesX.Http;
 using System.Linq;
@@ -15,10 +14,7 @@ namespace WooliesX.Data.IntegrationTests
         public void TestInitialize()
         {
             _sut = new ShopperHistoryProcessor(
-                new RestRespository<ShopperHistoryEntity>(
-                    Constants.SHOPPER_HISTORY_API_URL,
-                    new HttpClientHelper()
-                )
+                new HttpClientHelper()
             );
         }
 

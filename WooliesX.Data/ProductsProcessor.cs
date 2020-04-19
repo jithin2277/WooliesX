@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WooliesX.Data.Entities;
 using WooliesX.Data.Enums;
-using WooliesX.Data.Repositories;
+using WooliesX.Http;
 
 namespace WooliesX.Data
 {
@@ -17,18 +17,20 @@ namespace WooliesX.Data
 
     public class ProductsProcessor : IProductsProcessor
     {
-        private IRepository<ProductEntity> _productRepository;
+        private IHttpClientHelper _httpClientHelper;
         private IShopperHistoryProcessor _shopperHistoryProcessor;
 
-        public ProductsProcessor(IRepository<ProductEntity> productRepository, IShopperHistoryProcessor shopperHistoryProcessor)
+        public ProductsProcessor(IHttpClientHelper httpClientHelper, IShopperHistoryProcessor shopperHistoryProcessor)
         {
-            _productRepository = productRepository ?? throw new ArgumentNullException(nameof(productRepository));
+            _httpClientHelper = httpClientHelper ?? throw new ArgumentNullException(nameof(httpClientHelper));
             _shopperHistoryProcessor = shopperHistoryProcessor ?? throw new ArgumentNullException(nameof(shopperHistoryProcessor));
         }
 
         public async Task<IEnumerable<ProductEntity>> GetProducts()
         {
-            return await _productRepository.GetAll().ConfigureAwait(false);
+            return await _httpClientHelper
+                .GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)
+                .ConfigureAwait(false);
         }
 
         public async Task<IEnumerable<ProductEntity>> GetProducts(SortOption sortOption)
@@ -66,10 +68,9 @@ namespace WooliesX.Data
             {
                 if (disposing)
                 {
-                    if (_productRepository != null)
+                    if (_httpClientHelper != null)
                     {
-                        _productRepository.Dispose();
-                        _productRepository = null;
+                        _httpClientHelper = null;
                     }
                 }
 

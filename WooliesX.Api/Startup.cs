@@ -13,7 +13,6 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using WooliesX.Data;
 using WooliesX.Data.Entities;
-using WooliesX.Data.Repositories;
 using WooliesX.Http;
 
 namespace WooliesX.Api
@@ -37,11 +36,6 @@ namespace WooliesX.Api
             services.AddScoped<IShopperHistoryProcessor, ShopperHistoryProcessor>();
             
             services.AddScoped<IHttpClientHelper, HttpClientHelper>();
-            services.AddScoped<IRepository<ProductEntity>>(provider => 
-                new RestRespository<ProductEntity>(Constants.PRODUCT_API_URL, provider.GetService<IHttpClientHelper>()));
-            services.AddScoped<IRepository<ShopperHistoryEntity>>(provider =>
-                new RestRespository<ShopperHistoryEntity>(Constants.SHOPPER_HISTORY_API_URL, provider.GetService<IHttpClientHelper>()));
-
             services.AddAutoMapper(typeof(Startup));
         }
 

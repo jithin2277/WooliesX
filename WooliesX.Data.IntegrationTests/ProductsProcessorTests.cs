@@ -5,7 +5,6 @@ using System.Linq;
 using System.Text;
 using WooliesX.Data.Entities;
 using WooliesX.Data.Enums;
-using WooliesX.Data.Repositories;
 using WooliesX.Http;
 
 namespace WooliesX.Data.IntegrationTests
@@ -19,15 +18,9 @@ namespace WooliesX.Data.IntegrationTests
         public void TestInitialize()
         {
             _sut = new ProductsProcessor(
-                new RestRespository<ProductEntity>(
-                    Constants.PRODUCT_API_URL,
-                    new HttpClientHelper()
-                ),
+                new HttpClientHelper(),
                 new ShopperHistoryProcessor(
-                    new RestRespository<ShopperHistoryEntity>(
-                        Constants.SHOPPER_HISTORY_API_URL,
-                        new HttpClientHelper()
-                    )
+                    new HttpClientHelper()
                 )
             );
         }

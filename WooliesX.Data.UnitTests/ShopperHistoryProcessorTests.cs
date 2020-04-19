@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using WooliesX.Data.Entities;
-using WooliesX.Data.Repositories;
 using WooliesX.Http;
 
 
@@ -13,20 +12,20 @@ namespace WooliesX.Data.UnitTests
     [TestClass]
     public class ShopperHistoryProcessorTests
     {
-        private Mock<IRepository<ShopperHistoryEntity>> _mockShopperHistoryRepository;
+        private Mock<IHttpClientHelper> _mockHttpClientHelper;
         private IShopperHistoryProcessor _sut;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _mockShopperHistoryRepository = new Mock<IRepository<ShopperHistoryEntity>>(MockBehavior.Strict);
-            _sut = new ShopperHistoryProcessor(_mockShopperHistoryRepository.Object);
+            _mockHttpClientHelper = new Mock<IHttpClientHelper>(MockBehavior.Strict);
+            _sut = new ShopperHistoryProcessor(_mockHttpClientHelper.Object);
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            _mockShopperHistoryRepository.VerifyAll();
+            _mockHttpClientHelper.VerifyAll();
         }
 
         [TestMethod]
@@ -48,7 +47,7 @@ namespace WooliesX.Data.UnitTests
                         new ProductEntity {  Name = "C", Price = 3, Quantity = 1}
             }}};
 
-            _mockShopperHistoryRepository.Setup(s => s.GetAll()).ReturnsAsync(expected);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ShopperHistoryEntity>>(Constants.SHOPPER_HISTORY_API_URL)).ReturnsAsync(expected);
             var result = _sut.GetShopperHistory().Result;
 
             Assert.AreEqual(expected, result);
@@ -100,7 +99,10 @@ namespace WooliesX.Data.UnitTests
                 })
                 .OrderByDescending(o => o.Quantity).ToList();
 
-            _mockShopperHistoryRepository.Setup(s => s.GetAll()).ReturnsAsync(data);
+            _mockHttpClientHelper.Setup(s => 
+                s.GetAsync<IEnumerable<ShopperHistoryEntity>>(Constants.SHOPPER_HISTORY_API_URL))
+                .ReturnsAsync(data);
+
             var result = _sut.GetProductsByPopularityByQuantity().Result.ToList();
 
             for (int i = 0; i < expected.Count; i++)

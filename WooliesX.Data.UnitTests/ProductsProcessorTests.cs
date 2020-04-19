@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using WooliesX.Data.Entities;
 using WooliesX.Data.Enums;
-using WooliesX.Data.Repositories;
 using WooliesX.Http;
 
 
@@ -14,22 +13,22 @@ namespace WooliesX.Data.UnitTests
     [TestClass]
     public class ProductsProcessorTests
     {
-        private Mock<IRepository<ProductEntity>> _mockProductRepository;
+        private Mock<IHttpClientHelper> _mockHttpClientHelper;
         private Mock<IShopperHistoryProcessor> _mockShopperHistoryProcessor;
         private IProductsProcessor _sut;
 
         [TestInitialize]
         public void TestInitialize()
         {
-            _mockProductRepository = new Mock<IRepository<ProductEntity>>(MockBehavior.Strict);
+            _mockHttpClientHelper = new Mock<IHttpClientHelper>(MockBehavior.Strict);
             _mockShopperHistoryProcessor = new Mock<IShopperHistoryProcessor>(MockBehavior.Strict);
-            _sut = new ProductsProcessor(_mockProductRepository.Object, _mockShopperHistoryProcessor.Object);
+            _sut = new ProductsProcessor(_mockHttpClientHelper.Object, _mockShopperHistoryProcessor.Object);
         }
 
         [TestCleanup]
         public void TestCleanup()
         {
-            _mockProductRepository.VerifyAll();
+            _mockHttpClientHelper.VerifyAll();
             _mockShopperHistoryProcessor.VerifyAll();
         }
 
@@ -42,7 +41,7 @@ namespace WooliesX.Data.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Ctor_WhenProductRepositoryIsNull_ThrowsException()
+        public void Ctor_WhenHttpClientHelperIsNull_ThrowsException()
         {
             _ = new ProductsProcessor(null, _mockShopperHistoryProcessor.Object);
         }
@@ -51,7 +50,7 @@ namespace WooliesX.Data.UnitTests
         [ExpectedException(typeof(ArgumentNullException))]
         public void Ctor_WhenShopperHistoryProcessorIsNull_ThrowsException()
         {
-            _ = new ProductsProcessor(_mockProductRepository.Object, null);
+            _ = new ProductsProcessor(_mockHttpClientHelper.Object, null);
         }
 
         [TestMethod]
@@ -63,7 +62,7 @@ namespace WooliesX.Data.UnitTests
                 new ProductEntity { Name = "C", Price = 3, Quantity = 3 },
             };
 
-            _mockProductRepository.Setup(s => s.GetAll()).ReturnsAsync(products);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
 
             var result = _sut.GetProducts().Result.ToList();
 
@@ -86,7 +85,7 @@ namespace WooliesX.Data.UnitTests
             };
             var expected = products.OrderBy(o => o.Price).ToList();
 
-            _mockProductRepository.Setup(s => s.GetAll()).ReturnsAsync(products);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
 
             var result = _sut.GetProducts(SortOption.Low).Result.ToList();
 
@@ -109,7 +108,7 @@ namespace WooliesX.Data.UnitTests
             };
             var expected = products.OrderByDescending(o => o.Price).ToList();
 
-            _mockProductRepository.Setup(s => s.GetAll()).ReturnsAsync(products);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
 
             var result = _sut.GetProducts(SortOption.High).Result.ToList();
 
@@ -132,7 +131,7 @@ namespace WooliesX.Data.UnitTests
             };
             var expected = products.OrderBy(o => o.Name).ToList();
 
-            _mockProductRepository.Setup(s => s.GetAll()).ReturnsAsync(products);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
 
             var result = _sut.GetProducts(SortOption.Ascending).Result.ToList();
 
@@ -155,7 +154,7 @@ namespace WooliesX.Data.UnitTests
             };
             var expected = products.OrderByDescending(o => o.Name).ToList();
 
-            _mockProductRepository.Setup(s => s.GetAll()).ReturnsAsync(products);
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
 
             var result = _sut.GetProducts(SortOption.Descending).Result.ToList();
 
