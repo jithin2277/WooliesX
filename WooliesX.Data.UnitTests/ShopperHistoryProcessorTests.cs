@@ -87,20 +87,21 @@ namespace WooliesX.Data.UnitTests
                 }
             };
 
-            var expected = data.SelectMany(s => s.Products)
+            var expected = data
+                .SelectMany(s => s.Products)
                 .GroupBy(g => g.Name)
                 .Select(s => {
                     return new ProductEntity
                     {
                         Name = s.Key,
-                        Price = s.Sum(p => p.Price),
-                        Quantity = s.Count()
+                        Price = s.Where(w => w.Name == s.Key).First().Price,
+                        Quantity = s.Sum(u => u.Quantity)
                     };
                 })
                 .OrderByDescending(o => o.Quantity).ToList();
 
             _mockShopperHistoryRepository.Setup(s => s.GetAll()).ReturnsAsync(data);
-            var result = _sut.GetProductsByPopularity().Result.ToList();
+            var result = _sut.GetProductsByPopularityByQuantity().Result.ToList();
 
             for (int i = 0; i < expected.Count; i++)
             {

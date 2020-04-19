@@ -51,7 +51,7 @@ namespace WooliesX.Data
             }
             else if(sortOption == SortOption.Recommended)
             {
-                return await _shopperHistoryProcessor.GetProductsByPopularity().ConfigureAwait(false);
+                return await _shopperHistoryProcessor.GetProductsByPopularityByQuantity().ConfigureAwait(false);
             }
 
             return null;

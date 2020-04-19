@@ -174,11 +174,11 @@ namespace WooliesX.Data.UnitTests
             var products = new List<ProductEntity> {
                 new ProductEntity { Name = "A", Price = 1, Quantity = 1 },
                 new ProductEntity { Name = "B", Price = 2, Quantity = 2 },
-                new ProductEntity { Name = "C", Price = 3, Quantity = 3 },
+                new ProductEntity { Name = "C", Price = 3, Quantity = 3 }
             };
             var expected = products.OrderByDescending(o => o.Quantity).ToList();
 
-            _mockShopperHistoryProcessor.Setup(s => s.GetProductsByPopularity()).ReturnsAsync(expected);
+            _mockShopperHistoryProcessor.Setup(s => s.GetProductsByPopularityByQuantity()).ReturnsAsync(expected);
 
             var result = _sut.GetProducts(SortOption.Recommended).Result.ToList();
 

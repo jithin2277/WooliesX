@@ -25,7 +25,7 @@ namespace WooliesX.Data.IntegrationTests
         [TestMethod]
         public void GetProductsByPopularity_Succeeds()
         {
-            var products = _sut.GetProductsByPopularity().Result;
+            var products = _sut.GetProductsByPopularityByQuantity().Result;
 
             Assert.IsNotNull(products);
             Assert.IsTrue(SortTools.IsSortedDescending(products.Select(s => s.Quantity).ToArray()));
