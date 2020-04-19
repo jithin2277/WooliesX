@@ -171,13 +171,42 @@ namespace WooliesX.Data.UnitTests
         public void GetProducts_WhenSortOptionIsRecommended_ReturnsProductsSortedByProductPopularity()
         {
             var products = new List<ProductEntity> {
-                new ProductEntity { Name = "A", Price = 1, Quantity = 1 },
-                new ProductEntity { Name = "B", Price = 2, Quantity = 2 },
-                new ProductEntity { Name = "C", Price = 3, Quantity = 3 }
+                new ProductEntity { Name = "A", Price = 1, Quantity = 0 },
+                new ProductEntity { Name = "B", Price = 2, Quantity = 0 },
+                new ProductEntity { Name = "C", Price = 3, Quantity = 0 }
             };
-            var expected = products.OrderByDescending(o => o.Quantity).ToList();
+            var shopperHistory = new List<ShopperHistoryEntity> { 
+                new ShopperHistoryEntity { 
+                    CustomerId = 1, 
+                    Products = new List<ProductEntity> {
+                        new ProductEntity { Name = "A", Price = 1, Quantity = 1 },
+                        new ProductEntity { Name = "B", Price = 2, Quantity = 1 },
+                    } 
+                },
+                new ShopperHistoryEntity {
+                    CustomerId = 2,
+                    Products = new List<ProductEntity> {
+                        new ProductEntity { Name = "A", Price = 1, Quantity = 1 },
+                        new ProductEntity { Name = "C", Price = 2, Quantity = 1 },
+                    }
+                }
+            };
 
-            _mockShopperHistoryProcessor.Setup(s => s.GetProductsByPopularityByQuantity()).ReturnsAsync(expected);
+            var expected = shopperHistory
+                .SelectMany(s => s.Products)
+                .Concat(products)
+                .GroupBy(g => g.Name)
+                .Select(s => new ProductEntity
+                {
+                    Name = s.Key,
+                    Price = s.Where(w => w.Name == s.Key).First().Price,
+                    Quantity = s.Sum(u => u.Quantity)
+                })
+                .OrderByDescending(o => o.Quantity)
+                .ToList(); 
+
+            _mockHttpClientHelper.Setup(s => s.GetAsync<IEnumerable<ProductEntity>>(Constants.PRODUCT_API_URL)).ReturnsAsync(products);
+            _mockShopperHistoryProcessor.Setup(s => s.GetShopperHistory()).ReturnsAsync(shopperHistory);
 
             var result = _sut.GetProducts(SortOption.Recommended).Result.ToList();
 

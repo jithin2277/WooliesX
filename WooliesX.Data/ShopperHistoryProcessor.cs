@@ -11,8 +11,6 @@ namespace WooliesX.Data
     public interface IShopperHistoryProcessor : IDisposable
     {
         Task<IEnumerable<ShopperHistoryEntity>> GetShopperHistory();
-        Task<IEnumerable<ProductEntity>> GetProductsByPopularityByQuantity();
-        Task<IEnumerable<ProductEntity>> GetProductsByPopularityByFrequency();
     }
 
     public class ShopperHistoryProcessor : IShopperHistoryProcessor
@@ -23,33 +21,6 @@ namespace WooliesX.Data
         {
             _httpClientHelper = httpClientHelper
                 ?? throw new ArgumentNullException(nameof(httpClientHelper));
-        }
-
-        public async Task<IEnumerable<ProductEntity>> GetProductsByPopularityByQuantity()
-        {
-            var shopperHistory = await GetShopperHistory().ConfigureAwait(false);
-
-            return shopperHistory
-                .SelectMany(s => s.Products)
-                .GroupBy(g => g.Name)
-                .Select(s => new ProductEntity {
-                    Name = s.Key,
-                    Price = s.Where(w => w.Name == s.Key).First().Price,
-                    Quantity = s.Sum(u => u.Quantity)
-                })
-                .OrderByDescending(o => o.Quantity);
-        }
-
-        public async Task<IEnumerable<ProductEntity>> GetProductsByPopularityByFrequency()
-        {
-            var shopperHistory = await GetShopperHistory().ConfigureAwait(false);
-
-            return shopperHistory
-                .SelectMany(s => s.Products)
-                .GroupBy(g => g.Name)
-                .Select(s => new { Product = s.FirstOrDefault(), Count = s.Count() })
-                .OrderByDescending(o => o.Count)
-                .Select(s => s.Product);
         }
 
         public async Task<IEnumerable<ShopperHistoryEntity>> GetShopperHistory()

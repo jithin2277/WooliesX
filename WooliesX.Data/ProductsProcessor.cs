@@ -35,28 +35,47 @@ namespace WooliesX.Data
 
         public async Task<IEnumerable<ProductEntity>> GetProducts(SortOption sortOption)
         {
+            var allProducts = await GetProducts().ConfigureAwait(false);
+
             if (sortOption == SortOption.Ascending)
             {
-                return (await GetProducts().ConfigureAwait(false)).OrderBy(o => o.Name);
+                return allProducts.OrderBy(o => o.Name);
             }
             else if (sortOption == SortOption.Descending)
             {
-                return (await GetProducts().ConfigureAwait(false)).OrderByDescending(o => o.Name);
+                return allProducts.OrderByDescending(o => o.Name);
             }
             else if (sortOption == SortOption.High)
             {
-                return (await GetProducts().ConfigureAwait(false)).OrderByDescending(o => o.Price);
+                return allProducts.OrderByDescending(o => o.Price);
             }
             else if (sortOption == SortOption.Low)
             {
-                return (await GetProducts().ConfigureAwait(false)).OrderBy(o => o.Price);
+                return allProducts.OrderBy(o => o.Price);
             }
             else if(sortOption == SortOption.Recommended)
             {
-                return await _shopperHistoryProcessor.GetProductsByPopularityByQuantity().ConfigureAwait(false);
+                return await SortProductsByPopularity(allProducts).ConfigureAwait(false);
             }
 
             return null;
+        }
+
+        private async Task<IEnumerable<ProductEntity>> SortProductsByPopularity(IEnumerable<ProductEntity> allProducts)
+        {
+            var shopperHistory = await _shopperHistoryProcessor.GetShopperHistory().ConfigureAwait(false);
+
+            return shopperHistory
+                .SelectMany(s => s.Products)
+                .Concat(allProducts)
+                .GroupBy(g => g.Name)
+                .Select(s => new ProductEntity
+                {
+                    Name = s.Key,
+                    Price = s.Where(w => w.Name == s.Key).First().Price,
+                    Quantity = s.Sum(u => u.Quantity)
+                })
+                .OrderByDescending(o => o.Quantity);
         }
 
         #region IDisposable Support

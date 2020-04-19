@@ -19,12 +19,11 @@ namespace WooliesX.Data.IntegrationTests
         }
 
         [TestMethod]
-        public void GetProductsByPopularity_Succeeds()
+        public void GetShopperHistory_Succeeds()
         {
-            var products = _sut.GetProductsByPopularityByQuantity().Result;
+            var shopperHistory = _sut.GetShopperHistory().Result;
 
-            Assert.IsNotNull(products);
-            Assert.IsTrue(SortTools.IsSortedDescending(products.Select(s => s.Quantity).ToArray()));
+            Assert.IsNotNull(shopperHistory);
         }
     }
 }
