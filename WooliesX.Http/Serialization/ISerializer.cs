@@ -7,6 +7,6 @@ namespace WooliesX.Http.Serialization
     public interface ISerializer
     {
         string Serialize(object data);
-        T Deserialize<T>(string value) where T : class;
+        T Deserialize<T>(string value);
     }
 }

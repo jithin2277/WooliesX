@@ -34,7 +34,8 @@ namespace WooliesX.Api
             services.AddScoped<IUserTokenProcessor, UserTokenProcessor>();
             services.AddScoped<IProductsProcessor, ProductsProcessor>();
             services.AddScoped<IShopperHistoryProcessor, ShopperHistoryProcessor>();
-            
+            services.AddScoped<ITrolleyTotalProcessor, TrolleyTotalProcessor>();
+
             services.AddScoped<IHttpClientHelper, HttpClientHelper>();
             services.AddAutoMapper(typeof(Startup));
         }

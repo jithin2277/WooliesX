@@ -1,21 +1,27 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using WooliesX.Data.Entities.Trolley;
+using WooliesX.Http;
 
 namespace WooliesX.Data
 {
     public interface ITrolleyTotalProcessor : IDisposable
     {
-        Task<int> GetTrolleyTotal(TrolleyEntity trolleyEntity);
+        Task<string> GetTrolleyTotal(TrolleyEntity trolleyEntity);
     }
 
     public class TrolleyTotalProcessor : ITrolleyTotalProcessor
     {
-        public Task<int> GetTrolleyTotal(TrolleyEntity trolleyEntity)
+        private IHttpClientHelper _httpClientHelper;
+
+        public TrolleyTotalProcessor(IHttpClientHelper httpClientHelper)
         {
-            throw new NotImplementedException();
+            _httpClientHelper = httpClientHelper ?? throw new ArgumentNullException(nameof(httpClientHelper));
+        }
+
+        public async Task<string> GetTrolleyTotal(TrolleyEntity trolleyEntity)
+        {
+            return await _httpClientHelper.PostAsync<TrolleyEntity, string>(Constants.TROLLEY_CALCULATOR, trolleyEntity).ConfigureAwait(false);
         }
 
         #region IDisposable Support
@@ -27,6 +33,10 @@ namespace WooliesX.Data
             {
                 if (disposing)
                 {
+                    if (_httpClientHelper != null)
+                    {
+                        _httpClientHelper = null;
+                    }
                 }
 
                 disposedValue = true;

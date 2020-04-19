@@ -30,7 +30,7 @@ namespace WooliesX.Data.UnitTests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void Ctor_WhenShopperHistoryRepository_IsNull_ThrowsException()
+        public void Ctor_WhenHttpClientHelper_IsNull_ThrowsException()
         {
             _ = new ShopperHistoryProcessor(null);
         }

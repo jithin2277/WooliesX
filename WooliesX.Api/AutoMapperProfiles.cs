@@ -17,10 +17,10 @@ namespace WooliesX.Api
             CreateMap<UserEntity, User>();
             CreateMap<ProductEntity, Product>();
             
-            CreateMap<TrolleyEntity, Trolley>();
-            CreateMap<TrolleyProductEntity, TrolleyProduct>();
-            CreateMap<TrolleyProductQuantityEntity, TrolleyProductQuantity>();
-            CreateMap<TrolleySpecialEntity, TrolleySpecial>();
+            CreateMap<Trolley, TrolleyEntity>();
+            CreateMap<TrolleyProduct, TrolleyProductEntity>();
+            CreateMap<TrolleyProductQuantity, TrolleyProductQuantityEntity>();
+            CreateMap<TrolleySpecial, TrolleySpecialEntity>();
         }
     }
 }

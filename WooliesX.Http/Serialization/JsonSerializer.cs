@@ -7,7 +7,7 @@ namespace WooliesX.Http.Serialization
 {
     public class JsonSerializer : ISerializer
     {
-        public T Deserialize<T>(string value) where T : class
+        public T Deserialize<T>(string value)
         {
             if (string.IsNullOrEmpty(value))
             {

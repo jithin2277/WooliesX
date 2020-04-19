@@ -41,7 +41,7 @@ namespace WooliesX.Http
 
         public async Task<TResponse> PostAsync<TRequestBody, TResponse>(string uri, TRequestBody data) where TRequestBody : class where TResponse : class
         {
-            var content = new StringContent(_serializer.Serialize(data));
+            var content = new StringContent(_serializer.Serialize(data), Encoding.UTF8, "application/json");
             using (var httpClient = new HttpClient())
             {
                 var response = await httpClient.PostAsync(uri, content).ConfigureAwait(false);
