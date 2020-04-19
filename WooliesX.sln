@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29613.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesX.Api", "WooliesX.Api\WooliesX.Api.csproj", "{96F6D952-84E0-4EDF-A03C-4E73C8C7F666}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesX.Data", "WooliesX.Data\WooliesX.Data.csproj", "{8082651C-242B-4B0C-9A74-D11E37B03F12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesX.Http", "WooliesX.Http\WooliesX.Http.csproj", "{EB78ADBC-AF94-4254-AA58-2738A6D77357}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{F46C5CA4-057D-45CA-B738-34888C6EAACB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WooliesX.Data.IntegrationTests", "WooliesX.Data.IntegrationTests\WooliesX.Data.IntegrationTests.csproj", "{A86BF304-6DB9-4F36-A198-6578AC7B1D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WooliesX.Data.UnitTests", "WooliesX.Data.UnitTests\WooliesX.Data.UnitTests.csproj", "{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96F6D952-84E0-4EDF-A03C-4E73C8C7F666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96F6D952-84E0-4EDF-A03C-4E73C8C7F666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96F6D952-84E0-4EDF-A03C-4E73C8C7F666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96F6D952-84E0-4EDF-A03C-4E73C8C7F666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8082651C-242B-4B0C-9A74-D11E37B03F12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8082651C-242B-4B0C-9A74-D11E37B03F12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8082651C-242B-4B0C-9A74-D11E37B03F12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8082651C-242B-4B0C-9A74-D11E37B03F12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB78ADBC-AF94-4254-AA58-2738A6D77357}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB78ADBC-AF94-4254-AA58-2738A6D77357}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB78ADBC-AF94-4254-AA58-2738A6D77357}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB78ADBC-AF94-4254-AA58-2738A6D77357}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A86BF304-6DB9-4F36-A198-6578AC7B1D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A86BF304-6DB9-4F36-A198-6578AC7B1D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A86BF304-6DB9-4F36-A198-6578AC7B1D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A86BF304-6DB9-4F36-A198-6578AC7B1D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{A86BF304-6DB9-4F36-A198-6578AC7B1D6B} = {F46C5CA4-057D-45CA-B738-34888C6EAACB}
+		{96D53D9E-D14E-4AD6-B3A8-4B678D0C3549} = {F46C5CA4-057D-45CA-B738-34888C6EAACB}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2A74E05D-203D-4B50-9747-CC5B68AA33EF}
+	EndGlobalSection
+EndGlobal
