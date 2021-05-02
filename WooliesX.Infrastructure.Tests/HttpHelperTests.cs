@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using WooliesX.Infrastructure.Http;
+﻿using WooliesX.Infrastructure.Http;
 using Xunit;
 
 namespace WooliesX.Infrastructure.Tests

@@ -20,7 +20,7 @@ namespace WooliesX.Application.TrolleyTotal
     public class TrolleySpecial : IMapTo<TrolleySpecialEntity>
     {
         public IEnumerable<TrolleyProductQuantity> Quantities { get; set; }
-        public long Total { get; set; }
+        public double Total { get; set; }
     }
 
     public class TrolleyProductQuantity : IMapTo<TrolleyProductQuantityEntity>
