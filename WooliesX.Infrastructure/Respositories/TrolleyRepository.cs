@@ -38,6 +38,8 @@ namespace WooliesX.Infrastructure.Respositories
 
         public async Task<string> GetTrolleyTotal(TrolleyEntity trolleyEntity)
         {
+            _logger.LogInformation($"GetTrolleyTotal: Getting trolley total from {_trolleyTotalUrl}");
+
             return await _httpClientHelper.PostAsync<TrolleyEntity, string>(_trolleyTotalUrl, trolleyEntity).ConfigureAwait(false);
         }
     }

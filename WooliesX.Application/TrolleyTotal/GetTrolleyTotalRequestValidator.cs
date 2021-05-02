@@ -7,9 +7,6 @@ namespace WooliesX.Application.TrolleyTotal
         public GetTrolleyTotalRequestValidator()
         {
             RuleFor(v => v.Trolley).NotEmpty();
-            RuleFor(v => v.Trolley.Products).NotEmpty();
-            RuleFor(v => v.Trolley.Quantities).NotEmpty();
-            RuleFor(v => v.Trolley.Specials).NotEmpty();
         }
     }
 }

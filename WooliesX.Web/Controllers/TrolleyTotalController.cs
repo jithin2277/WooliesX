@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System.Threading.Tasks;
 using WooliesX.Application.TrolleyTotal;
 
@@ -16,12 +17,16 @@ namespace WooliesX.Web.Controllers
 
         public async Task<ActionResult<string>> Post(TrolleyDto trolley)
         {
-            _logger.LogInformation("GetTrolleyTotal: Get total of Trolley");
+            _logger.LogInformation($"GetTrolleyTotal: Get total of Trolley: Request : {JsonConvert.SerializeObject(trolley)}");
 
-            return Ok(await Mediator.Send(new GetTrolleyTotalRequest
+            var total = await Mediator.Send(new GetTrolleyTotalRequest
             {
                 Trolley = trolley
-            }));
+            });
+
+            _logger.LogInformation($"GetTrolleyTotal: Got total of: {total}");
+
+            return Ok(total);
         }
     }
 }
