@@ -20,7 +20,7 @@ namespace WooliesX.Application.Common.Behaviours
 
             await Task.Factory.StartNew(() =>
             {
-                _logger.LogInformation("Prepack Gateway Service Request: {Name}", requestName);
+                _logger.LogInformation("WooliesX API Request: {Name}", requestName);
             }).ConfigureAwait(false);
         }
     }
