@@ -1,0 +1,207 @@
+02/05/2021 18:47:47 WooliesX.Web [Information]  : WooliesX API Starting.
+02/05/2021 18:47:47 WooliesX.Web [Information] WooliesX.Web.RequestLoggingMiddleware : Request "GET" "/api/answers/user" => 200
+02/05/2021 18:47:47 WooliesX.Web [Information] WooliesX.Web.Controllers.AnswersController : Get: User details
+02/05/2021 18:47:47 WooliesX.Web [Information] WooliesX.Application.UserDetails.GetUserDetailsRequest : WooliesX API Request: "GetUserDetailsRequest"
+02/05/2021 18:47:47 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.UserRespository : GetUserDetails: Getting User details for: Jithin Jayasankar
+02/05/2021 18:48:09 WooliesX.Web [Information] WooliesX.Web.RequestLoggingMiddleware : Request "POST" "/api/trolleytotal" "{
+    \"Products\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Price\": 11.6897355097764
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Price\": 4.96590236665956
+        }
+    ],
+    \"Specials\": [],
+    \"Quantities\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Quantity\": 3
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Quantity\": 8
+        }
+    ]
+}" => 200
+02/05/2021 18:48:10 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Get total of Trolley: Request : {"Products":[{"Name":"Product 0","Price":11.6897355097764},{"Name":"Product 1","Price":4.96590236665956}],"Specials":[],"Quantities":[{"Name":"Product 0","Quantity":3},{"Name":"Product 1","Quantity":8}]}
+02/05/2021 18:48:10 WooliesX.Web [Information] WooliesX.Application.TrolleyTotal.GetTrolleyTotalRequest : WooliesX API Request: "GetTrolleyTotalRequest"
+02/05/2021 18:48:10 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.TrolleyRepository : GetTrolleyTotal: Getting trolley total from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/trolleyCalculator?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 18:48:10 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Got total of: 74.79642546260568
+02/05/2021 18:54:37 WooliesX.Web [Information]  : WooliesX API Starting.
+02/05/2021 18:54:37 WooliesX.Web [Information] WooliesX.Web.RequestLoggingMiddleware : Request "GET" "/api/answers/user" => 200
+02/05/2021 18:54:37 WooliesX.Web [Information] WooliesX.Web.Controllers.AnswersController : Get: User details
+02/05/2021 18:54:37 WooliesX.Web [Information] WooliesX.Application.UserDetails.GetUserDetailsRequest : WooliesX API Request: "GetUserDetailsRequest"
+02/05/2021 18:54:37 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.UserRespository : GetUserDetails: Getting User details for: Jithin Jayasankar
+02/05/2021 18:54:50 WooliesX.Web [Information] WooliesX.Web.RequestLoggingMiddleware : Request "POST" "/api/trolleytotal" "{
+    \"Products\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Price\": 11.6897355097764
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Price\": 4.96590236665956
+        }
+    ],
+    \"Specials\": [],
+    \"Quantities\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Quantity\": 3
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Quantity\": 8
+        }
+    ]
+}" => 200
+02/05/2021 18:54:50 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Get total of Trolley: Request : {"Products":[{"Name":"Product 0","Price":11.6897355097764},{"Name":"Product 1","Price":4.96590236665956}],"Specials":[],"Quantities":[{"Name":"Product 0","Quantity":3},{"Name":"Product 1","Quantity":8}]}
+02/05/2021 18:54:50 WooliesX.Web [Information] WooliesX.Application.TrolleyTotal.GetTrolleyTotalRequest : WooliesX API Request: "GetTrolleyTotalRequest"
+02/05/2021 18:54:50 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.TrolleyRepository : GetTrolleyTotal: Getting trolley total from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/trolleyCalculator?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 18:54:51 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Got total of: 74.79642546260568
+02/05/2021 18:54:56 WooliesX.Web [Information] WooliesX.Web.RequestLoggingMiddleware : Request "POST" "/api/trolleytotal" "{
+    \"Products\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Price\": 5.24973787378973
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Price\": 4.75529401551713
+        },
+        {
+            \"Name\": \"Product 2\",
+            \"Price\": 2.22967069234218
+        },
+        {
+            \"Name\": \"Product 3\",
+            \"Price\": 7.16081730190702
+        },
+        {
+            \"Name\": \"Product 4\",
+            \"Price\": 14.602359831148
+        }
+    ],
+    \"Specials\": [
+        {
+            \"Quantities\": [
+                {
+                    \"Name\": \"Product 0\",
+                    \"Quantity\": 8
+                },
+                {
+                    \"Name\": \"Product 1\",
+                    \"Quantity\": 9
+                },
+                {
+                    \"Name\": \"Product 2\",
+                    \"Quantity\": 5
+                },
+                {
+                    \"Name\": \"Product 3\",
+                    \"Quantity\": 1
+                },
+                {
+                    \"Name\": \"Product 4\",
+                    \"Quantity\": 8
+                }
+            ],
+            \"Total\": 7.27185621484237
+        },
+        {
+            \"Quantities\": [
+                {
+                    \"Name\": \"Product 0\",
+                    \"Quantity\": 0
+                },
+                {
+                    \"Name\": \"Product 1\",
+                    \"Quantity\": 8
+                },
+                {
+                    \"Name\": \"Product 2\",
+                    \"Quantity\": 1
+                },
+                {
+                    \"Name\": \"Product 3\",
+                    \"Quantity\": 5
+                },
+                {
+                    \"Name\": \"Product 4\",
+                    \"Quantity\": 6
+                }
+            ],
+            \"Total\": 31.4476564612682
+        },
+        {
+            \"Quantities\": [
+                {
+                    \"Name\": \"Product 0\",
+                    \"Quantity\": 2
+                },
+                {
+                    \"Name\": \"Product 1\",
+                    \"Quantity\": 4
+                },
+                {
+                    \"Name\": \"Product 2\",
+                    \"Quantity\": 0
+                },
+                {
+                    \"Name\": \"Product 3\",
+                    \"Quantity\": 9
+                },
+                {
+                    \"Name\": \"Product 4\",
+                    \"Quantity\": 2
+                }
+            ],
+            \"Total\": 30.7108088426767
+        }
+    ],
+    \"Quantities\": [
+        {
+            \"Name\": \"Product 0\",
+            \"Quantity\": 7
+        },
+        {
+            \"Name\": \"Product 1\",
+            \"Quantity\": 9
+        },
+        {
+            \"Name\": \"Product 2\",
+            \"Quantity\": 8
+        },
+        {
+            \"Name\": \"Product 3\",
+            \"Quantity\": 6
+        },
+        {
+            \"Name\": \"Product 4\",
+            \"Quantity\": 6
+        }
+    ]
+}" => 200
+02/05/2021 18:54:56 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Get total of Trolley: Request : {"Products":[{"Name":"Product 0","Price":5.24973787378973},{"Name":"Product 1","Price":4.75529401551713},{"Name":"Product 2","Price":2.22967069234218},{"Name":"Product 3","Price":7.16081730190702},{"Name":"Product 4","Price":14.602359831148}],"Specials":[{"Quantities":[{"Name":"Product 0","Quantity":8},{"Name":"Product 1","Quantity":9},{"Name":"Product 2","Quantity":5},{"Name":"Product 3","Quantity":1},{"Name":"Product 4","Quantity":8}],"Total":7.27185621484237},{"Quantities":[{"Name":"Product 0","Quantity":0},{"Name":"Product 1","Quantity":8},{"Name":"Product 2","Quantity":1},{"Name":"Product 3","Quantity":5},{"Name":"Product 4","Quantity":6}],"Total":31.4476564612682},{"Quantities":[{"Name":"Product 0","Quantity":2},{"Name":"Product 1","Quantity":4},{"Name":"Product 2","Quantity":0},{"Name":"Product 3","Quantity":9},{"Name":"Product 4","Quantity":2}],"Total":30.7108088426767}],"Quantities":[{"Name":"Product 0","Quantity":7},{"Name":"Product 1","Quantity":9},{"Name":"Product 2","Quantity":8},{"Name":"Product 3","Quantity":6},{"Name":"Product 4","Quantity":6}]}
+02/05/2021 18:54:56 WooliesX.Web [Information] WooliesX.Application.TrolleyTotal.GetTrolleyTotalRequest : WooliesX API Request: "GetTrolleyTotalRequest"
+02/05/2021 18:54:56 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.TrolleyRepository : GetTrolleyTotal: Getting trolley total from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/trolleyCalculator?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 18:54:57 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Got total of: 95.71962774161572
+02/05/2021 19:40:04 WooliesX.Web [Information]  : WooliesX API Starting.
+02/05/2021 19:40:04 WooliesX.Web [Information] WooliesX.Web.Controllers.AnswersController : Get: User details
+02/05/2021 19:40:04 WooliesX.Web [Information] WooliesX.Application.UserDetails.GetUserDetailsRequest : WooliesX API Request: "GetUserDetailsRequest"
+02/05/2021 19:40:05 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.UserRespository : GetUserDetails: Getting User details for: Jithin Jayasankar
+02/05/2021 19:40:14 WooliesX.Web [Information] WooliesX.Web.Controllers.TrolleyTotalController : GetTrolleyTotal: Get total of Trolley
+02/05/2021 19:40:14 WooliesX.Web [Information] WooliesX.Application.TrolleyTotal.GetTrolleyTotalRequest : WooliesX API Request: "GetTrolleyTotalRequest"
+02/05/2021 19:40:14 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.TrolleyRepository : GetTrolleyTotal: Getting trolley total from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/trolleyCalculator?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 19:40:41 WooliesX.Web [Information] WooliesX.Web.Controllers.ProductsController : Get: Get all products
+02/05/2021 19:40:41 WooliesX.Web [Information] WooliesX.Application.Products.GetProductsRequest : WooliesX API Request: "GetProductsRequest"
+02/05/2021 19:40:41 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.ProductRespository : GetProducts: Getting products from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 19:40:57 WooliesX.Web [Information] WooliesX.Web.Controllers.ProductsController : Get: Get sorted products by High
+02/05/2021 19:40:57 WooliesX.Web [Information] WooliesX.Application.Products.GetProductsRequest : WooliesX API Request: "GetProductsRequest"
+02/05/2021 19:40:57 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.ProductRespository : GetProducts: Getting products from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304
+02/05/2021 19:41:04 WooliesX.Web [Information] WooliesX.Web.Controllers.ProductsController : Get: Get sorted products by Low
+02/05/2021 19:41:04 WooliesX.Web [Information] WooliesX.Application.Products.GetProductsRequest : WooliesX API Request: "GetProductsRequest"
+02/05/2021 19:41:04 WooliesX.Web [Information] WooliesX.Infrastructure.Respositories.ProductRespository : GetProducts: Getting products from http://dev-wooliesx-recruitment.azurewebsites.net/api/resource/products?token=bcdbce44-1d88-4ad1-b0ad-9fd7da41a304

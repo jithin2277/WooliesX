@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WooliesX.Application\WooliesX.Application.csproj" />
+    <ProjectReference Include="..\..\src\WooliesX.Infrastructure\WooliesX.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
