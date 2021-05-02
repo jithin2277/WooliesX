@@ -4,20 +4,22 @@
 
 https://wooliesxapi20210430055639.azurewebsites.net
 
+## Endpoints
+Excercise 1 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/answers/user
+Excercise 2 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/products/sort
+Excercise 3 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/trolleyTotal
+
 ## Major Packages used
 
 * Mediatr
-* Moq
 * FluentValidation
 * Automapper
 * Serilog
 * xUnit
-
-## Patterns followed
-
-* Mediator pattern
+* Moq
 
 ## Projects Overview
+Clean Architecture pattern 
 
 WooliesX.Domain (.netStandard 2.1 class library)  
 Contains the Domain objects for WooliesX API. It's a .netStandard 2.1 project with no dependencies.
@@ -31,5 +33,5 @@ Contains classes for accessing external resources such as database connections a
 WooliesX.Web (Asp.Net Core 3.1)  
 This is the API layer containing the Controllers. It depends on Application and Infrastructure layers
 
-
-
+## References
+https://jasontaylor.dev/clean-architecture-getting-started/
