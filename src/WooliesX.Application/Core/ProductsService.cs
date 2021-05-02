@@ -10,7 +10,6 @@ namespace WooliesX.Application.Core
     public interface IProductsService
     {
         Task<IEnumerable<ProductEntity>> GetProducts(SortOption? sortOption);
-        Task<IEnumerable<ProductEntity>> SortByRecommended(IEnumerable<ProductEntity> products);
     }
 
     public class ProductsService : IProductsService
@@ -24,7 +23,7 @@ namespace WooliesX.Application.Core
             _shopperRespository = shopperRespository;
         }
 
-        public async Task<IEnumerable<ProductEntity>> SortByRecommended(IEnumerable<ProductEntity> products)
+        private async Task<IEnumerable<ProductEntity>> SortByRecommended(IEnumerable<ProductEntity> products)
         {
             var shopperHistory = await _shopperRespository.GetShopperHistory().ConfigureAwait(false);
 
