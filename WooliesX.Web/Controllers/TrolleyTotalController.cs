@@ -23,8 +23,6 @@ namespace WooliesX.Web.Controllers
                 Trolley = trolley
             });
 
-            _logger.LogInformation($"GetTrolleyTotal: Got total of: {total}");
-
             return Ok(total);
         }
     }
