@@ -19,7 +19,7 @@ Excercise 3 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/tr
 * Moq
 
 ## Projects Overview
-Clean Architecture pattern 
+Based on Clean Architecture   
 
 WooliesX.Domain (.netStandard 2.1 class library)  
 Contains the Domain objects for WooliesX API. It's a .netStandard 2.1 project with no dependencies.
