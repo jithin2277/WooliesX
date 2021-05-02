@@ -30,8 +30,12 @@ namespace WooliesX.Infrastructure.Respositories
             {
                 throw new ArgumentNullException("ProductsEndPoint is null or empty");
             }
+            if (string.IsNullOrEmpty(appSettings.Token))
+            {
+                throw new ArgumentNullException("Token is null or empty");
+            }
 
-            _productsUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.ProductsEndPoint);
+            _productsUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.ProductsEndPoint, appSettings.Token);
             _logger = logger;
         }
 

@@ -25,7 +25,7 @@ namespace WooliesX.Application.Common.Behaviours
             {
                 var requestName = typeof(TRequest).Name;
 
-                _logger.LogError(ex, "Prepacks Gateway Service Request: Unhandled Exception for Request {Name}", requestName);
+                _logger.LogError(ex, "WooliesX Api Request failed: Unhandled Exception for Request {Name}", requestName);
 
                 throw;
             }

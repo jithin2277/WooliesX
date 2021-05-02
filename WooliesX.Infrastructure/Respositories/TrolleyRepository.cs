@@ -27,8 +27,12 @@ namespace WooliesX.Infrastructure.Respositories
             {
                 throw new ArgumentNullException("TrolleyCalculatorEndPoint is null or empty");
             }
+            if (string.IsNullOrEmpty(appSettings.Token))
+            {
+                throw new ArgumentNullException("Token is null or empty");
+            }
 
-            _trolleyTotalUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.TrolleyCalculatorEndPoint);
+            _trolleyTotalUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.TrolleyCalculatorEndPoint, appSettings.Token);
             _logger = logger;
         }
 

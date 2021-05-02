@@ -2,7 +2,7 @@
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
-using WooliesX.Application.Common.Interfaces;
+using WooliesX.Application.Core;
 
 namespace WooliesX.Application.UserDetails
 {
@@ -13,18 +13,18 @@ namespace WooliesX.Application.UserDetails
 
     public class GetUserDetailsRequestHandler : IRequestHandler<GetUserDetailsRequest, UserDto>
     {
-        private readonly IUserRespository _userRespository;
+        private readonly IUserService _userService;
         private readonly IMapper _mapper;
 
-        public GetUserDetailsRequestHandler(IUserRespository userRespository, IMapper mapper)
+        public GetUserDetailsRequestHandler(IUserService userService, IMapper mapper)
         {
-            _userRespository = userRespository;
+            _userService = userService;
             _mapper = mapper;
         }
 
         public async Task<UserDto> Handle(GetUserDetailsRequest request, CancellationToken cancellationToken)
         {
-            return _mapper.Map<UserDto>(await _userRespository.GetUserDetails(request.Name));
+            return _mapper.Map<UserDto>(await _userService.GetUserDetails(request.Name));
         }
     }
 }

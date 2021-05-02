@@ -2,7 +2,7 @@
 {
     public static class HttpHelper
     {
-        public static string GenerateUrl(string baseUrl, string endpoint)
+        public static string GenerateUrl(string baseUrl, string endpoint, string token)
         {
             if (baseUrl.EndsWith('/'))
             {
@@ -13,7 +13,7 @@
                 endpoint = endpoint.Remove(endpoint.IndexOf('/'));
             }
 
-            return $"{baseUrl}/{endpoint}";
+            return $"{baseUrl}/{endpoint}?token={token}";
         }
     }
 }

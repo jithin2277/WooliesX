@@ -16,6 +16,7 @@ namespace WooliesX.Infrastructure
             services.AddScoped<IUserRespository, UserRespository>();
             services.AddScoped<IProductRespository, ProductRespository>();
             services.AddScoped<IShopperRespository, ShopperRespository>();
+            services.AddScoped<ITrolleyRepository, TrolleyRepository>();
 
             return services;
         }

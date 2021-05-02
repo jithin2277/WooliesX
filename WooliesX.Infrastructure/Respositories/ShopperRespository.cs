@@ -29,7 +29,7 @@ namespace WooliesX.Infrastructure.Respositories
                 throw new ArgumentNullException("ShopperHistoryEndPoint is null or empty");
             }
 
-            _shopperHistoryUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.ShopperHistoryEndPoint);
+            _shopperHistoryUrl = HttpHelper.GenerateUrl(appSettings.BaseUrl, appSettings.ShopperHistoryEndPoint, appSettings.Token);
             _logger = logger;
         }
 

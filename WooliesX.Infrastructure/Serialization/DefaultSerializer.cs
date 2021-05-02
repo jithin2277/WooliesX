@@ -12,7 +12,7 @@ namespace WooliesX.Infrastructure.Serialization
                 throw new ArgumentNullException(nameof(value));
             }
 
-            return JsonSerializer.Deserialize<T>(value);
+            return JsonSerializer.Deserialize<T>(value, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
         }
 
         public string Serialize(object value)
