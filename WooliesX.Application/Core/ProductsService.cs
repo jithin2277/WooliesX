@@ -10,7 +10,7 @@ namespace WooliesX.Application.Core
     public interface IProductsService
     {
         Task<IEnumerable<ProductEntity>> GetProducts(SortOption? sortOption);
-        Task<IEnumerable<ProductEntity>> GetRecommended(IEnumerable<ProductEntity> products);
+        Task<IEnumerable<ProductEntity>> SortByRecommended(IEnumerable<ProductEntity> products);
     }
 
     public class ProductsService : IProductsService
@@ -24,7 +24,7 @@ namespace WooliesX.Application.Core
             _shopperRespository = shopperRespository;
         }
 
-        public async Task<IEnumerable<ProductEntity>> GetRecommended(IEnumerable<ProductEntity> products)
+        public async Task<IEnumerable<ProductEntity>> SortByRecommended(IEnumerable<ProductEntity> products)
         {
             var shopperHistory = await _shopperRespository.GetShopperHistory().ConfigureAwait(false);
 
@@ -52,7 +52,7 @@ namespace WooliesX.Application.Core
                     SortOption.High => products.OrderByDescending(o => o.Price),
                     SortOption.Ascending => products.OrderBy(o => o.Name),
                     SortOption.Descending => products.OrderByDescending(o => o.Name),
-                    SortOption.Recommended => await GetRecommended(products).ConfigureAwait(false),
+                    SortOption.Recommended => await SortByRecommended(products).ConfigureAwait(false),
                     _ => products,
                 };
             }
