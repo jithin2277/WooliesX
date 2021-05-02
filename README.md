@@ -5,9 +5,9 @@
 https://wooliesxapi20210430055639.azurewebsites.net
 
 ## Endpoints
-Excercise 1 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/answers/user
-Excercise 2 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/products/sort
-Excercise 3 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/trolleyTotal
+Excercise 1 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/answers/user  
+Excercise 2 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/products/sort  
+Excercise 3 endpoint: https://wooliesxapi20210430055639.azurewebsites.net/api/trolleyTotal  
 
 ## Major Packages used
 
