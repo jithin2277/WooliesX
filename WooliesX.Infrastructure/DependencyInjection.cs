@@ -9,7 +9,7 @@ namespace WooliesX.Infrastructure
     {
         public static IServiceCollection AddInfrastructure(this IServiceCollection services)
         {
-            services.AddScoped<ISerializer, DefaultSerializer>();
+            services.AddScoped<ISerializer, JsonNetSerializer>();
 
             services.AddScoped<IHttpClientHelper, HttpClientHelper>();
 
